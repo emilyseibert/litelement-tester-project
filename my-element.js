@@ -56,6 +56,7 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
+      <!-- This import applies .my-element-button styles inside of #shadow-root -->
       <link href="/dev/static/css/style.css" rel="stylesheet" />
 
       <h1>Hello, ${this.name}!</h1>
