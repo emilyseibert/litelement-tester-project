@@ -14,6 +14,8 @@
 
 import {LitElement, html, css} from 'lit-element';
 
+// importing styles with webpack & litelement: https://github.com/drdreo/lit-scss-loader
+
 /**
  * An example element.
  *
@@ -54,8 +56,10 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
+      <link href="/dev/static/css/style.css" rel="stylesheet" />
+
       <h1>Hello, ${this.name}!</h1>
-      <button @click=${this._onClick} part="button">
+      <button class="my-element-button" @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
       <slot></slot>
