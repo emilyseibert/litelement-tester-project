@@ -21,7 +21,10 @@
     "test:watch": "karma start karma.conf.cjs --auto-watch=true --single-run=false",
     "test:update-snapshots": "karma start karma.conf.cjs --update-snapshots",
     "test:prune-snapshots": "karma start karma.conf.cjs --prune-snapshots",
-    "checksize": "rollup -c ; cat my-element.bundled.js | gzip -9 | wc -c ; rm my-element.bundled.js"
+    "checksize": "rollup -c ; cat my-element.bundled.js | gzip -9 | wc -c ; rm my-element.bundled.js",
+    "build-css": "stylus -c dev/static/stylus/ --out dev/static/css",
+    "watch-css": "npm run build-css && stylus -c -w dev/static/stylus/ --out dev/static/css",
+    "start": "npm-run-all -p watch-css serve"
   },
   "keywords": [
     "web-components",
@@ -51,6 +54,7 @@
     "karma-mocha": "^1.3.0",
     "lit-analyzer": "^1.1.9",
     "mocha": "^7.1.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "rimraf": "^3.0.2",
     "rollup": "^1.32.1",
