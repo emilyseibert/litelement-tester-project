@@ -17,6 +17,7 @@ import '@lit-element-bootstrap/button/bs-button.js';
 import {DefaultThemeCss} from '@lit-element-bootstrap/theme/default-theme-css.js';
 import {BsButtonPrimaryCss} from '@lit-element-bootstrap/button/css/bs-button-primary.css.js';
 import {BsButtonSecondaryCss} from '@lit-element-bootstrap/button/css/bs-button-secondary.css.js';
+import Fontawesome from 'lit-fontawesome';
 
 // importing styles with webpack & litelement: https://github.com/drdreo/lit-scss-loader
 
@@ -32,6 +33,7 @@ export class MyElement extends LitElement {
   // }
   static get styles() {
     return [
+      Fontawesome,
       DefaultThemeCss,
       BsButtonPrimaryCss,
       BsButtonSecondaryCss,
@@ -73,9 +75,11 @@ export class MyElement extends LitElement {
       <bs-button context="secondary">Secondary</bs-button>
 
       <h1>Hello, ${this.name}!</h1>
-      <bs-button context="secondary" @click=${this._onClick}
-        >Click Count: ${this.count}</bs-button
+      <bs-button context="secondary" @click=${this._onClick}>
+        <i class="fas fa-fw fa-calculator"></i> Click Count:
+        ${this.count}</bs-button
       >
+
       <slot></slot>
     `;
   }
