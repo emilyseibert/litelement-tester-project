@@ -13,6 +13,10 @@
  */
 
 import {LitElement, html, css} from 'lit-element';
+import '@lit-element-bootstrap/button/bs-button.js';
+import {DefaultThemeCss} from '@lit-element-bootstrap/theme/default-theme-css.js';
+import {BsButtonPrimaryCss} from '@lit-element-bootstrap/button/css/bs-button-primary.css.js';
+import {BsButtonSecondaryCss} from '@lit-element-bootstrap/button/css/bs-button-secondary.css.js';
 
 // importing styles with webpack & litelement: https://github.com/drdreo/lit-scss-loader
 
@@ -23,15 +27,24 @@ import {LitElement, html, css} from 'lit-element';
  * @csspart button - The button
  */
 export class MyElement extends LitElement {
+  // static get styles() {
+  //   return
+  // }
   static get styles() {
-    return css`
-      :host {
-        display: block;
-        border: solid 1px gray;
-        padding: 16px;
-        max-width: 800px;
-      }
-    `;
+    return [
+      DefaultThemeCss,
+      BsButtonPrimaryCss,
+      BsButtonSecondaryCss,
+      css`
+        :host {
+          display: block;
+          border: solid 1px gray;
+          background-color: #eee;
+          padding: 16px;
+          max-width: 800px;
+        }
+      `,
+    ];
   }
 
   static get properties() {
@@ -56,13 +69,13 @@ export class MyElement extends LitElement {
 
   render() {
     return html`
-      <!-- This import applies .my-element-button styles inside of #shadow-root -->
-      <link href="/dev/static/css/style.css" rel="stylesheet" />
+      <bs-button context="primary">Primary</bs-button>
+      <bs-button context="secondary">Secondary</bs-button>
 
       <h1>Hello, ${this.name}!</h1>
-      <button class="my-element-button" @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
+      <bs-button context="secondary" @click=${this._onClick}
+        >Click Count: ${this.count}</bs-button
+      >
       <slot></slot>
     `;
   }
